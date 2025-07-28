@@ -112,7 +112,7 @@ export class AppService {
             date: new Date(date.trim()),
             id_reference_produit: id_reference_produit,
             quantite: parseInt(quantite),
-            id_magasin: id_Magasin,
+            id_magasin: parseInt(id_Magasin),
           });
         }
       }

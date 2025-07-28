@@ -23,7 +23,7 @@ export class Vente {
     quantite: number;
 
     @Column()
-    id_magasin: string;
+    id_magasin: number;
 
     @ManyToMany(() => Magasin, (magasin) => magasin.id_Magasin)
     @JoinColumn({ name: 'id_magasin' })
