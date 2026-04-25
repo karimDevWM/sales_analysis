@@ -3,7 +3,7 @@ name: Deploy Images to GHCR
 on:
   pull_request: 
     branches:
-      - main
+      - master
   workflow_dispatch: 
 
 env:
