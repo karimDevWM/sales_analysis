@@ -7,7 +7,7 @@ on:
   workflow_dispatch: 
 
 env:
-  IMAGE_NAME: ghcr.io/central-api
+  IMAGE_NAME: central-api
   BUILD_DATE: $(date +'%d%m%Y')
 
 jobs:
@@ -94,4 +94,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/projet-mspr-bloc-4
-            terraform apply -var="central_api_image=ghcr.io/${{github.actor}}/${{env.IMAGE_NAME}}/:${{env.IMAGE_TAG}}" -auto-approve
+            terraform apply -var="central_api_image=ghcr.io/karimdevwm/${{env.IMAGE_NAME}}/:${{env.IMAGE_TAG}}" -auto-approve
