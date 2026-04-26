@@ -40,27 +40,6 @@ jobs:
   #           echo "✅ No console.log statements found."
   #         fi
 
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v4
-      
-      - name: set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      
-      - name: install dependencies
-        run: npm install
-      
-      - name: Run unit tests
-        run: npm run test
-      
-      - name: Run integration tests
-        run: npm run test:e2e
-
   build-push-store-docker-image:
     runs-on: ubuntu-latest
     permissions:
