@@ -21,7 +21,7 @@ export class AppService {
   ) {}
 
   getHello(): string {
-    return 'Hello World!';
+    return 'Hello World from mac !';
   }
 
   async CsvToArray(file: Express.Multer.File, option: string) {
