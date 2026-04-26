@@ -21,10 +21,10 @@ jobs:
               username: ${{github.actor}}
               password: ${{secrets.GH_TOKEN}}
 
-          - name: 'Build Inventory Image'
-            run: |
-              docker build --tag ghcr.io/karimdevwm/sales_analysis:latest .
-              docker push ghcr.io/karimdevwm/sales_analysis:latest
+          # - name: 'Build Inventory Image'
+          #   run: |
+          #     docker build --tag ghcr.io/karimdevwm/sales_analysis:latest .
+          #     docker push ghcr.io/karimdevwm/sales_analysis:latest
           
       # deploy:
       #   needs: push-store-image

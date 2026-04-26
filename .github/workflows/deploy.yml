@@ -7,7 +7,7 @@ on:
   workflow_dispatch: 
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: ghcr.io/central-api
   BUILD_DATE: $(date +'%d%m%Y')
 
 jobs:
@@ -114,5 +114,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ~/task_service/deploy/
-            ansible-playbook -i inventory deploy_microservices.yml
+            cd ~/projet-mspr-bloc-4
+            terraform apply -var="central_api_image=ghcr.io/${{github.actor}}${{env.IMAGE_NAME}}/:${{env.IMAGE_TAG}}" -auto-approve
