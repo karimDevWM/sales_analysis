@@ -64,4 +64,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/projet-mspr-bloc-4
-            terraform apply -var="central_api_image=ghcr.io/karimdevwm/${{ env.IMAGE_NAME }}:${{ needs.build-push-store-docker-image.outputs.image_tag }}" -auto-approve
+            terraform apply \
+              -var="github_username=karimdevwm" \
+              -var="github_token=${{secrets.GH_TOKEN}}"-var="central_api_image=ghcr.io/karimdevwm/${{ env.IMAGE_NAME }}:${{ needs.build-push-store-docker-image.outputs.image_tag }}" -auto-approve
