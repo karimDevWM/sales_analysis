@@ -50,21 +50,21 @@ jobs:
             docker build --tag ghcr.io/karimdevwm/${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}} .
             docker push ghcr.io/karimdevwm/${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}}
 
-  deploy:
-    needs: build-push-store-docker-image
-    name: Deploy Docker Image
-    runs-on: ubuntu-latest
+  # deploy:
+  #   needs: build-push-store-docker-image
+  #   name: Deploy Docker Image
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Deploy using Ansible
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd ~/projet-mspr-bloc-4
-            terraform apply \
-              -var="github_username=karimdevwm" \
-              -var="github_token=${{secrets.GH_TOKEN}}" \
-              -var="central_api_image=ghcr.io/karimdevwm/${{ env.IMAGE_NAME }}:${{ needs.build-push-store-docker-image.outputs.image_tag }}" -auto-approve
+  #   steps:
+  #     - name: Deploy using Ansible
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.SSH_HOST }}
+  #         username: ${{ secrets.SSH_USER }}
+  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         script: |
+  #           cd ~/projet-mspr-bloc-4
+  #           terraform apply \
+  #             -var="github_username=karimdevwm" \
+  #             -var="github_token=${{secrets.GH_TOKEN}}" \
+  #             -var="central_api_image=ghcr.io/karimdevwm/${{ env.IMAGE_NAME }}:${{ needs.build-push-store-docker-image.outputs.image_tag }}" -auto-approve
